@@ -255,10 +255,3 @@ Melakukan testing dengan mencoba restart kemudian membuka console Skypie
 kemudian mengecek IPnya.
 
 ![](./assets/image9.png)
-
-
-[^1]: 1.0 → 1.1: Mengubah kalimat "**dengan enkripsi bcrypt**" menjadi
-    "**dengan enkripsi MD5**"
-
-[^2]: 1.0 → 1.1: Mengubah kalimat "Zoro mencari sisanya" menjadi "Zoro
-    **mendapatkan sisanya**"
