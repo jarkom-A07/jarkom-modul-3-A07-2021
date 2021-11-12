@@ -1,5 +1,5 @@
-# Jarkom-Modul-2-A07-2021
-Laporan resmi berisi dokumentasi soal Jarkom Modul 2.
+# Jarkom-Modul-3-A07-2021
+Laporan resmi berisi dokumentasi soal Jarkom Modul 3.
 ---
 Kelompok A-07:
 - [Arkan Aulia Farhan](): 05111940000128
