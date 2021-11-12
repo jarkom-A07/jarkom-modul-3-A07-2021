@@ -1,20 +1,19 @@
-**PRAKTIKUM JARKOM MODUL 3**
+# Jarkom-Modul-2-A07-2021
+Laporan resmi berisi dokumentasi soal Jarkom Modul 2.
+---
+Kelompok A-07:
+- [Arkan Aulia Farhan](): 05111940000128
+- [Muchamad Maroqi Abdul Jalil](https://github.com/maroqijalil): 05111940000143
+- [Syamil Difaul Haq Sukur](https://github.com/Syamil28): 05111940000196
+---
 
-Kelompok A07:
-
-1.  Arkan Aulia Farhan (05111940000128)
-
-2.  Muchamad Maroqi Abdul Jalil (05111940000143)
-
-3.  Syamil Difaull Haq Sukur (05111940000196)
-
-Soal praktikum:
+## Soal praktikum:
 
 Luffy yang sudah menjadi Raja Bajak Laut ingin mengembangkan daerah
 kekuasaannya dengan membuat peta seperti berikut:
 
-![](./assets/media/image1.png){width="6.283464566929134in"
-height="4.611111111111111in"}
+![](./assets/image1.png)
+
 
 Luffy bersama Zoro berencana membuat peta tersebut dengan kriteria
 **EniesLobby** sebagai DNS Server, **Jipangu** sebagai DHCP Server,
@@ -75,189 +74,196 @@ kecepatan **10 kbps (12)**. Sedangkan, Zoro yang sangat bersemangat
 untuk mencari harta karun, sehingga kecepatan kapal Zoro tidak dibatasi
 ketika sudah mendapatkan harta yang diinginkannya **(13)**.
 
-Jawaban:
+## Jawaban:
 
-Karena kelompok kami adalah A07 maka kami menggunakan IP: 192.171.x.x
+Karena kelompok kami adalah A07 maka kami menggunakan IP: 192.172.x.x
 
-1.  Konfigurasi Node
+## Nomor 1
+Konfigurasi Node
 
+### Jawab
 -   Foosha
 
 Melakukan konfigurasi Foosha sebagai Router dari semua device nantinya.
 
-![](./assets/media/image6.png){width="3.3958333333333335in"
-height="2.8854166666666665in"}
+![](./assets/image6.png)
+
 
 Memasukkan perintah berikut agar node dapat terhubung internet.
 
-![](./assets/media/image23.png){width="6.283464566929134in"
-height="0.5in"}
+![](./assets/image23.png)
+
 
 -   Loguetown
 
 Melakukan konfigurasi sebagai DHCP Client.
 
-![](./assets/media/image5.png){width="2.6979166666666665in"
-height="1.4375in"}
+![](./assets/image5.png)
+
 
 -   Alabasta
 
 Melakukan konfigurasi sebagai DHCP Client.
 
-![](./assets/media/image3.png){width="2.75in"
-height="1.4583333333333333in"}
+![](./assets/image3.png)
+
 
 -   EniesLobby
 
 Melakukan konfigurasi sebagai DNS Server dengan alokasi IP yaitu
 192.172.2.2.
 
-![](./assets/media/image26.png){width="2.6666666666666665in"
-height="1.1458333333333333in"}
+![](./assets/image26.png)
+
 
 Install kebutuhan DNS Server.
 
-![](./assets/media/image24.png){width="3.0208333333333335in"
-height="0.5416666666666666in"}
+![](./assets/image24.png)
+
 
 -   Water7
 
 Melakukan konfigurasi sebagai Proxy Server dengan alokasi IP yaitu
 192.171.2.3.
 
-![](./assets/media/image4.png){width="2.5104166666666665in"
-height="0.9583333333333334in"}
+![](./assets/image4.png)
+
 
 Install kebutuhan Proxy Server.
 
-![](./assets/media/image15.png){width="2.0729166666666665in"
-height="0.5in"}
+![](./assets/image15.png)
+
 
 -   Jipangu
 
 Melakukan konfigurasi sebagai DHCP Server dengan alokasi IP yaitu
 192.171.2.4.
 
-![](./assets/media/image25.png){width="2.5208333333333335in"
-height="0.90625in"}
+![](./assets/image25.png)
+
 
 Install kebutuhan DHCP Server.
 
-![](./assets/media/image12.png){width="3.3645833333333335in"
-height="0.4479166666666667in"}
+![](./assets/image12.png)
+
 
 -   Skypie
 
 Melakukan konfigurasi sebagai DHCP Client.
 
-![](./assets/media/image22.png){width="2.53125in"
-height="1.2916666666666667in"}
+![](./assets/image22.png)
+
 
 -   TottoLand
 
 Melakukan konfigurasi sebagai DHCP Client.
 
-![](./assets/media/image2.png){width="2.4583333333333335in"
-height="1.34375in"}
+![](./assets/image2.png)
 
-2.  Membuat Foosha sebagai DHCP Relay.
+
+## Nomor 2
+Membuat Foosha sebagai DHCP Relay.
+### Jawab
 
 Menuliskan perintah-perintah yang digunakan ke dalam bash script di
 Foosha. Perintah ini terdiri dari konfigurasi dhcp relay yang mengarah
 ke IP Jipangu dengan semua interfae disambungkan.
 
-![](./assets/media/image19.png){width="6.208333333333333in"
-height="2.5416666666666665in"}
+![](./assets/image19.png)
 
-3.  Setting Client pada Switch 1
-
+## Nomor 3
+Setting Client pada Switch 1
+### Jawab
 Menuliskan perintah-perintah yang digunakan ke dalam bash script di
 Jipangu. Perintah ini adalah melakukan konfigurasi pada dhcp server
 dengan interface pada eth0.
 
-![](./assets/media/image20.png){width="6.283464566929134in"
-height="2.1805555555555554in"}
+![](./assets/image20.png)
+
 
 Kemudian mengatur konfigurasi untuk menentukan range IP pada Switch 1.
 
-![](./assets/media/image21.png){width="5.979166666666667in"
-height="3.6041666666666665in"}
+![](./assets/image21.png)
+
 
 Melakukan testing dengan mencoba restart node Loguetown dan Alabasta,
 kemudian membuka console dan melihat IPnya.
 
 -   Loguetown
 
-![](./assets/media/image16.png){width="6.283464566929134in"
-height="1.7916666666666667in"}
+![](./assets/image16.png)
+
 
 -   Alabasta
 
-![](./assets/media/image10.png){width="6.283464566929134in"
-height="1.7361111111111112in"}
+![](./assets/image10.png)
 
-4.  Setting Client pada Switch 3
-
+## Nomor 4
+Setting Client pada Switch 3
+### Jawab
 Menambahkan konfigurasi yang digunakan ke dalam bash script di Jipangu.
 Konfigurasi ini adalah mengatur konfigurasi untuk menentukan range IP
 pada Switch 3.
 
-![](./assets/media/image7.png){width="4.625in"
-height="1.2291666666666667in"}
+![](./assets/image7.png)
+
 
 Melakukan testing dengan mencoba restart node Tottoland dan Skypie,
 kemudian membuka console dan melihat IPnya.
 
 -   Tottoland
 
-![](./assets/media/image11.png){width="6.283464566929134in"
-height="1.7638888888888888in"}
+![](./assets/image11.png)
+
 
 -   Skypie
 
-![](./assets/media/image18.png){width="6.283464566929134in"
-height="1.75in"}
+![](./assets/image18.png)
 
-5.  Konfigurasi DNS Forwarder pada EniesLobby
+## Nomor 5
+Konfigurasi DNS Forwarder pada EniesLobby
+### Jawab
 
 Menuliskan perintah-perintah yang digunakan ke dalam bash script di
 EniesLobby. Perintah ini adalah melakukan konfigurasi pada bind.
 
-![](./assets/media/image13.png){width="6.283464566929134in"
-height="2.861111111111111in"}
+![](./assets/image13.png)
+
 
 Melakukan testing dengan mencoba restart kemudian membuka console
 Loguetown dan melakukan ping google.com.
 
-![](./assets/media/image17.png){width="6.283464566929134in"
-height="2.5555555555555554in"}
+![](./assets/image17.png)
 
-6.  Setting Lease Time untuk eth1 dan eth3
+## Nomor 6
+Setting Lease Time untuk eth1 dan eth3
+### Jawab
 
 Menambahkan konfigurasi yang digunakan ke dalam bash script di Jipangu.
 Konfigurasi ini adalah mengatur waktu alokasi IP pada Switch 1 dan
 Switch 3.
 
-![](./assets/media/image8.png){width="4.5in"
-height="3.4583333333333335in"}
+![](./assets/image8.png)
 
-7.  Setting Fixed Adress untuk Skypie
+## Nomor 7
+Setting Fixed Adress untuk Skypie
+### Jawab
 
 Menambahkan konfigurasi yang digunakan ke dalam bash script di Jipangu.
 Konfigurasi ini adalah mengatur alokasi IP untuk Skypie pada Switch 3.
 
-![](./assets/media/image27.png){width="4.208333333333333in"
-height="0.7604166666666666in"}
+![](./assets/image27.png)
+
 
 Menambahkan static ethernet pada kofigurasi network di Skypie
 
-![](./assets/media/image14.png){width="2.78125in" height="1.53125in"}
+![](./assets/image14.png)}
 
 Melakukan testing dengan mencoba restart kemudian membuka console Skypie
 kemudian mengecek IPnya.
 
-![](./assets/media/image9.png){width="6.283464566929134in"
-height="1.7916666666666667in"}
+![](./assets/image9.png)
+
 
 [^1]: 1.0 → 1.1: Mengubah kalimat "**dengan enkripsi bcrypt**" menjadi
     "**dengan enkripsi MD5**"
