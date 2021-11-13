@@ -303,7 +303,7 @@ Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.a07.com denga
 8. Restart squid dengan command `service squid restart` dan jalankan command `lynx google.com` maka akan tampil homepage google.
 
 
-![](./assets/image9.png)
+![](./assets/image28.png)
 
 
 ## Nomor 9 
@@ -342,7 +342,7 @@ Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy di
 4. Restart squid dengan command `service squid restart` dan coba akses sebuah laman website maka tampilannya sebagai berikut
 
 
-![](./assets/image9.png)
+![](./assets/image29.png)
 
 
 ## Nomor 10 
@@ -379,7 +379,7 @@ Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet 
 
 5. Restart squid dengan command `service squid restart` dan coba akses sebuah laman website maka tampilannya sebagai berikut :
     > Jika mengakses di luar jam akses
-    ![](./assets/image9.png)
+    ![](./assets/image30.png)
 
     > Jika mengakses dalam range jam akses
-    ![](./assets/image9.png)
+    ![](./assets/image28.png)
