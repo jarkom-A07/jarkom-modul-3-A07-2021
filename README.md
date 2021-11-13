@@ -383,3 +383,4 @@ Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet 
 
     > Jika mengakses dalam range jam akses
     ![](./assets/image28.png)
+    
