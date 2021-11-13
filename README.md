@@ -382,5 +382,116 @@ Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet 
     ![](./assets/image30.png)
 
     > Jika mengakses dalam range jam akses
-    ![](./assets/image28.png)
-    
+<<<<<<< HEAD
+    ![](./assets/image9.png)
+
+## Nomor 11
+   Agar transaksi bisa lebih fokus berjalan, maka dilakukan redirect website agar mudah mengingat website transaksi jual beli kapal. Setiap mengakses google.com, akan diredirect menuju super.franky.yyy.com dengan website yang sama pada soal shift modul 2. Web server super.franky.yyy.com berada pada node Skypie.
+### Jawab
+1. pada `water7` tambahkan command berikut pada install.sh
+   ```
+   echo -e '
+   http_port
+   visible_hostname jualbelikapal.a07.com
+
+   include /etc/squid/acl-bandwith.conf
+
+   acl AVAIL_TIME_1 time MTWH 07:00-11:00
+   acl AVAIL_TIME_2 time MTWH 17:00-23:59
+   acl AVAIL_TIME_3 time MTWH 00:00-03:00
+
+   acl RED_SRC url_regex .google.com
+
+   auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+   auth_param basic children 5
+   auth_param basic realm Login
+   auth_param basic basic credentilsttl 2 hours
+   auth_param basic basic casesentitive on
+
+   acl USERS proxy_auth REQUIRED
+
+   deny_info http://super.franky.a07.com RED_SRC
+   http_access deny RED_SRC
+
+   http_access allow ISERS AVAIL_TIME_1
+   http_access allow ISERS AVAIL_TIME_2
+   http_access allow ISERS AVAIL_TIME_3
+   http_access deny all
+   '>/etc/squid/squid.conf
+   
+   echo '
+   nameserver 192.182.2.2
+   nameserver 192.172.3.69
+   ' > /etc/resolv.conf
+   ```
+   kemudian bash install.sh
+2. pada `loguetown` jalankan lynx dengan command
+   ```
+   Lynx google.com
+   Lynx super.franky.a07
+   ```
+   kemudian program akan melakukan redirect ke website `super.franky.a07` seperti tampilan berikut.
+   ![](./assets/image30.png)
+
+## Nomor 12
+Saatnya berlayar! Luffy dan Zoro akhirnya memutuskan untuk berlayar untuk mencari harta karun di super.franky.yyy.com. Tugas pencarian dibagi menjadi dua misi, Luffy bertugas untuk mendapatkan gambar (.png, .jpg), sedangkan Zoro mendapatkan sisanya. Karena Luffy orangnya sangat teliti untuk mencari harta karun, ketika ia berhasil mendapatkan gambar, ia mendapatkan gambar dan melihatnya dengan kecepatan 10 kbps.
+### Jawab
+1. Di `water7` Pada file script.sh masukkan command berikut
+   ```
+   echo'
+   acl download url_regex -i .jpg$ .png$
+   auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+
+   acl luffy proxy_auth luffybelikapalc05
+   acl zoro proxy_auth zorobelikapalc05
+
+   delay_pools 2
+
+   delay_class 1 1
+   delay_parameters 1 1250/1250
+   delay_access 1 allow luffy
+   delay_access 1 deny zoro
+   delay_access 1 allow download
+   delay_access 1 deny all
+
+   delay_class 2 1
+   delay_parameters 2 -1/-1
+   delay_access 2 allow zoro
+   delay_access 2 deny luffy
+   delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
+   ```
+   Kemudian tambahkan kode berikut pada `install.sh`
+   ```
+   include /etc/squid/acl-bandwidth.conf
+   ```
+2. Pada loguetown masukkan command berikut
+   ```
+   Lynx google.com
+   ```
+   masukkan username : luffybelikapala07 dan password : luffy_a07
+   kemudian download image akan dibatasi kecepatan downloadnya seperti berikut.
+   ![](./assets/image28.png)
+
+## Nomor 13
+Sedangkan, Zoro yang sangat bersemangat untuk mencari harta karun, sehingga kecepatan kapal Zoro tidak dibatasi ketika sudah mendapatkan harta yang diinginkannya.
+### Jawab
+1. di `water7` tambahkan command berikut pada script.sh
+   ```
+   delay_class 2 1
+   delay_parameters 2 -1/-1
+   delay_access 2 allow zoro
+   delay_access 2 deny luffy
+   delay_access 2 deny all ' >/etc/squid/acl-bandwidth.conf
+
+   ```
+   kemudian lakukan bash script.sh dan lakukan restart squid dengan command
+   ```
+   service squid restart
+   ```
+2. kemudian pada `loguetown` jalankan lynx dengan command
+   ```
+   lynx google.com
+   ```
+   masukkan username: zorobelikapala07 dan password: zoro_a07
+   kemudian download image kecepatan download tidak akan dibatasi dan memiliki tampilan seperti berikut.
+   ![](./assets/image29.png)
