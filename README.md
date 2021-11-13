@@ -255,3 +255,131 @@ Melakukan testing dengan mencoba restart kemudian membuka console Skypie
 kemudian mengecek IPnya.
 
 ![](./assets/image9.png)
+
+
+## Nomor 8
+Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.a07.com dengan port yang digunakan adalah 5000
+### Jawab
+1. Buka named.conf.local pada `EniesLobby` 
+
+   ```
+   vim /etc/bind/named.conf.local
+   ```
+
+2. Isikan configurasi zone domain **franky.a07.com** seperti berikut
+
+   ```
+     zone "jualbelikapal.a07.com" {
+     type master;
+     file "/etc/bind/kaizoku/jualbelikapal.a07.com";
+   };
+   ```
+
+3. Copykan file `db.local` pada path `/etc/bind` ke dalam folder **kaizoku** yang baru saja dibuat dan ubah namanya menjadi **jualbelikapal.a07.com**
+
+4. Restart bind9 pada `Enieslobby` dengan command `service bind9 restart`
+
+5. Pada Skypie, pindah ke direktori `/etc/apache2/sites-available` lalu _copy_ file **000-default.conf** ke **jualbelikapal.a07.com.conf** dengan perintah
+
+   ```
+   cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/franky.a07.com.conf
+   ```
+
+6. Masukkan command berikut pada `Water7`
+
+   ```
+   vim /etc/squid/squid.conf
+   ```
+
+7. Tambahkan syntax berikut ke squid.conf seperti berikut
+
+   ```
+   echo -e '
+   http_port 5000
+   visible_hostname jualbelikapal.a07.com
+   ' >> /etc/squid/squid.conf
+   ```
+
+8. Restart squid dengan command `service squid restart` dan jalankan command `lynx google.com` maka akan tampil homepage google.
+
+
+![](./assets/image9.png)
+
+
+## Nomor 9 
+Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapala07 dengan password luffy_a07 dan zorobelikapala07 dengan password zoro_a07
+### Jawab
+1. Install `apache2-utils` pada Water7 untuk authentikasi
+
+2. Buat user baru dengan command
+
+   ```
+   htpasswd -c /etc/squid/passwd luffybelikapala07
+   ```
+
+   dan ketikkan password **luffy_a07**.
+   Lakukan sekali lagi untuk zoro dengan command
+
+   ```
+   htpasswd -m /etc/squid/passwd zorobelikapala07
+   ```
+
+   dan ketikkan password **zoro_a07**.
+
+
+3. Tambahkan syntax berikut pada squid.conf
+   ```
+   echo -e '
+   auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+   auth_param basic children 5
+   auth_param basic realm Proxy
+   auth_param basic credentialsttl 2 hours
+   auth_param basic casesensitive on
+   acl USERS proxy_auth REQUIRED
+   ' >> /etc/squid/squid.conf
+   
+   ```
+4. Restart squid dengan command `service squid restart` dan coba akses sebuah laman website maka tampilannya sebagai berikut
+
+
+![](./assets/image9.png)
+
+
+## Nomor 10 
+Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet dibatasi hanya dapat diakses setiap hari Senin-Kamis pukul 07.00-11.00 dan setiap hari Selasa-Jum’at pukul 17.00-03.00 keesokan harinya (sampai Sabtu pukul 03.00)
+### Jawab
+1. Masukkan command berikut pada `Water7 ` untuk membuka acl.conf
+
+   ```
+   vim /etc/squid/acl.conf
+   ```
+
+2. Isi konfigurasi sesuai syntax berikut
+   ```
+   acl AVAILABLE_WORKING time MTWH 07:00-11:00
+   acl AVAILABLE_WORKING1 time TWHF 17:00-24:00
+   acl AVAILABLE_WORKING2 time WHFA 00:00-03:00
+   ```
+
+4. Tambahkan syntax berikut pada squid.conf
+   ```
+   echo -e '
+    include /etc/squid/acl.conf
+    http_access allow AVAILABLE_WORKING USERS
+    http_access allow AVAILABLE_WORKING1 USERS
+    http_access allow AVAILABLE_WORKING2 USERS
+    http_access deny all
+   ' >> /etc/squid/squid.conf
+   
+   ```
+    dan hapus syntax ini pada konfigurasi squid
+    ```
+    http_access allow all
+    ```
+
+5. Restart squid dengan command `service squid restart` dan coba akses sebuah laman website maka tampilannya sebagai berikut :
+    > Jika mengakses di luar jam akses
+    ![](./assets/image9.png)
+
+    > Jika mengakses dalam range jam akses
+    ![](./assets/image9.png)
